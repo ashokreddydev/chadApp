@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"> <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+</head>
+
+<script type="text/javascript">
+//     $(document).ready(function () {
+//         let tableTrdata = "";
+//         $.ajax({
+//             url: '/api/getdata',
+//             // dataType: "jsonp",
+//             data: '{"data": "TEST"}',
+//             type: 'POST',
+//             jsonpCallback: 'callback', // this is not relevant to the POST anymore
+//             success: function (data) {
+//                 console.log(data)
+
+//                 if (data.Status == 200) {
+                    
+//                     data.data.forEach(element => {
+
+//                         tableTrdata += "<tr><td>"+element.USERNAME+"</td><td>"+element.EMAIL+"</td><td>"+element.PHONE+"</td><td>"+element.genre+"</td><td>"+element.project_title+"</td><td>"+element.project_type+"</td><td>"+element.tags+"</td><td>"+element.project_details+"</td>";
+                
+                
+//             });
+//         }
+//         $("#tableData").html(tableTrdata)
+  
+//         console.log('Success: ')
+//     },
+//     error: function (xhr, status, error) {
+//         console.log('Error: ' + error.message);
+    
+//     },
+// });
+// });
+
+// </script>
+
+<body>
+
+
+    <table id="example" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>USERNAME</th>
+                <th>EMAIL</th>
+                <th>PHONE</th>
+                <th>genre</th>
+                <th>project_title</th>
+                <th>project_type</th>
+                <th>tags</th>
+                <th>project_details</th>
+            </tr>
+        </thead>
+    </table>
+
+    <script>
+$(document).ready(function() {
+    $('#example').DataTable( {
+             "ajax": {
+            "url": "/api/getdata",
+            "type": "POST"
+        },
+        "columns": [
+            { "data": "USERNAME" },
+            { "data": "EMAIL" },
+            { "data": "PHONE" },
+            { "data": "genre" },
+            { "data": "project_title" },
+            { "data": "project_type" },
+            { "data": "tags" },
+            { "data": "project_details" }
+        ]
+    } );
+} );
+
+    </script>
+
+
+   
+
+
+</body>
+
+</html>
